@@ -1,0 +1,235 @@
+<Root>
+  <DefaultMacro>
+    <Major></Major>
+    <Description>Чувствительность - 0.66; (Выставить чувствительность можно консольной командой input.sensitivity 0.66)
+самодельный прицел - 0.53;
+голографический прицел - 0.80.
+
+Поле зрения (FOV) 85;
+
+Значение FPS - не менее 50;
+
+Глушитель - по желанию;
+
+Лазерный прицел - по желанию;
+
+Подствольный фонарь - по желанию.
+
+Идеально работает в положении стоя, сидя и при движении
+
+Если вы хотите использовать дополнительные модули, Вам нужно настроить под них чувствительность в игре. Настраивается в зависимости куда уводит прицел по вертикали, Вы увеличиваете либо уменьшаете чувствительность. Если прицел уводит вверх - увеличиваете, если вниз - уменьшаете!</Description>
+    <Comment></Comment>
+    <GUIOption>
+      <RepeatType>1</RepeatType>
+    </GUIOption>
+    <KeyUp>
+      <Syntax></Syntax>
+    </KeyUp>
+    <KeyDown>
+      <Syntax>
+LeftDown 1
+Delay 25 ms
+MoveR -3 5
+Delay 25 ms
+MoveR -3 5
+Delay 25 ms
+MoveR -3 5
+Delay 25 ms
+MoveR -2 5
+Delay 25 ms
+MoveR -2 5
+Delay 25 ms
+MoveR -1 6
+Delay 25 ms
+MoveR -1 6
+Delay 25 ms
+MoveR -1 6
+Delay 25 ms
+MoveR -1 5
+Delay 25 ms
+MoveR 0 5
+Delay 25 ms
+MoveR 1 5
+Delay 25 ms
+MoveR 1 5
+Delay 25 ms
+MoveR 1 5
+Delay 25 ms
+MoveR 1 5
+Delay 25 ms
+MoveR 0 5
+Delay 25 ms
+MoveR 2 5
+Delay 25 ms
+MoveR 0 5
+Delay 25 ms
+MoveR 1 5
+Delay 25 ms
+MoveR 1 5
+Delay 25 ms
+MoveR 1 4
+Delay 25 ms
+MoveR 0 4
+MoveR 3 4
+Delay 25 ms
+MoveR 0 4
+Delay 25 ms
+MoveR 0 4
+Delay 25 ms
+MoveR 0 4
+Delay 25 ms
+MoveR 0 4
+Delay 25 ms
+MoveR 0 4
+Delay 25 ms
+MoveR 0 4
+Delay 25 ms
+MoveR 1 4
+Delay 25 ms
+MoveR 1 3
+Delay 25 ms
+MoveR 1 3
+Delay 25 ms
+MoveR 1 3
+Delay 25 ms
+MoveR 0 3
+Delay 25 ms
+MoveR 0 3
+Delay 25 ms
+MoveR 0 3
+Delay 25 ms
+MoveR 0 3
+Delay 25 ms
+MoveR 0 3
+Delay 25 ms
+MoveR 0 3
+Delay 25 ms
+MoveR 0 3
+Delay 25 ms
+MoveR 0 3
+Delay 35 ms
+MoveR 0 3
+Delay 25 ms
+MoveR 0 3
+Delay 25 ms
+MoveR 0 3
+Delay 25 ms
+MoveR 0 3
+Delay 25 ms
+MoveR 0 3
+Delay 25 ms
+MoveR 0 3
+Delay 25 ms
+MoveR 0 2
+Delay 25 ms
+MoveR 0 2
+Delay 25 ms
+MoveR 0 2
+Delay 25 ms
+MoveR 0 2
+Delay 25 ms
+MoveR 0 2
+Delay 25 ms
+MoveR -1 2
+Delay 25 ms
+MoveR 0 2
+Delay 25 ms
+MoveR -1 2
+Delay 25 ms
+MoveR 0 1
+Delay 25 ms
+MoveR 1 2
+Delay 25 ms
+MoveR 0 2
+Delay 25 ms
+MoveR 0 2
+Delay 25 ms
+MoveR 0 1
+Delay 25 ms
+MoveR 0 1
+Delay 25 ms
+MoveR 0 2
+Delay 25 ms
+MoveR 1 2
+Delay 25 ms
+MoveR 0 2
+Delay 25 ms
+MoveR 1 1
+Delay 25 ms
+MoveR 1 1
+Delay 25 ms
+MoveR 0 2
+Delay 25 ms
+MoveR 2 2
+Delay 25 ms
+MoveR 2 1
+Delay 25 ms
+MoveR 0 1
+Delay 25 ms
+MoveR 2 1
+Delay 25 ms
+MoveR 0 2
+Delay 25 ms
+MoveR 2 2
+Delay 25 ms
+MoveR 2 2
+Delay 25 ms
+MoveR 2 1
+Delay 25 ms
+MoveR 0 1
+Delay 25 ms
+MoveR 1 1
+Delay 25 ms
+MoveR 1 1
+Delay 25 ms
+MoveR 0 1
+Delay 25 ms
+MoveR 0 0
+Delay 25 ms
+MoveR 0 0
+Delay 25 ms
+MoveR 0 1
+Delay 25 ms
+MoveR 0 1
+Delay 25 ms
+MoveR 0 1
+Delay 25 ms
+MoveR 0 1
+Delay 25 ms
+MoveR 0 1
+Delay 25 ms
+MoveR 0 1
+Delay 25 ms
+MoveR -1 1
+Delay 25 ms
+MoveR 0 1
+Delay 25 ms
+MoveR -1 1
+Delay 25 ms
+MoveR 0 1
+Delay 25 ms
+MoveR 0 1
+Delay 25 ms
+MoveR -1 1
+Delay 25 ms
+MoveR -1 1
+Delay 25 ms
+MoveR -1 1
+Delay 25 ms
+MoveR 0 1
+Delay 25 ms
+MoveR 0 2
+Delay 25 ms
+MoveR -1 1
+Delay 25 ms
+MoveR 0 1
+Delay 25 ms
+MoveR 0 1
+Delay 25 ms
+MoveR 0 1
+LeftUp 1
+DelayS 1 s</Syntax>
+    </KeyDown>
+    <Software>Rust</Software>
+  </DefaultMacro>
+</Root>

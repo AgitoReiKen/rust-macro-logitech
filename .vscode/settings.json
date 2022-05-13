@@ -1,0 +1,8 @@
+{
+    "Lua.diagnostics.globals": [
+        "MoveMouseRelative",
+        "Sleep",
+        "IsMouseButtonPressed",
+        "EnablePrimaryMouseButtonEvents"
+    ]
+}
