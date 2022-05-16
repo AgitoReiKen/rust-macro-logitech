@@ -1,5 +1,6 @@
 # rust-macro
 Rust (game) macrosses for `Logitech's lua api`
+
 Macrosses taken from [https://botmek.ru/share/?group=Rust] and converted to lua by `amcToLua.py`
 
 How to use Converter:
