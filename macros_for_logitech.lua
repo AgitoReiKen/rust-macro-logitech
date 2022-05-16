@@ -1,7 +1,4 @@
--- Rust Macro Pack
--- Controls:
 EnablePrimaryMouseButtonEvents(true)
-
 
 --------- Settings
 Sens = 0.5
@@ -28,12 +25,11 @@ BaseSens = 0
 BaseFOV = 0
 SightModifier = 1.0
 MuzzleBoostModifier = 1.0
+MuzzleBoostModifierActive = 0.92
 AttachmentModifier = 1.0
-
-local PressedWheelTime = GetRunningTime()
-local PressedMuzzleBoostTime = GetRunningTime()
 -------------------
 
+---------- Utils
 function round(num)
     if num >= 0 then
         return math.floor(num + .5)
@@ -90,13 +86,69 @@ end
 function GetSensModifier()
     return (BaseSens / Sens) * (BaseFOV / FOV)
 end
+function isSilencerEnabled()
+    return AttachmentModifier == SilencerModifier
+end
+function getHoloModifier(withSilencer)
+    if withSilencer then
+        return HoloWithSilencerModifier
+    else 
+        return HoloModifier
+    end
+end
+function getxEightModifier(withSilencer)
+    if withSilencer then
+        return xEightWithSilencerModifier
+    else 
+        return xEightModifier 
+    end
+end
+function isHoloEnabled()
+    return ((SightModifier == HoloModifier) or (SightModifier == HoloWithSilencerModifier))
+end 
 
+function isxEightEnabled()
+    return ((SightModifier == xEightModifier) or (SightModifier == xEightWithSilencerModifier))
+end
+function UpdateAttachments(type)
+    if (type == "attach") then
+        if (AttachmentModifier == 1.0) then
+            AttachmentModifier = SilencerModifier
+            OutputLogMessage("[SILENCER] Attached\n")
+        elseif (AttachmentModifier == 0.8) then
+            AttachmentModifier = 1.0
+            OutputLogMessage("[SILENCER] De-Attached\n")
+        end
+    end
+   local silencerEnabled = isSilencerEnabled()
+
+    if (type == "sight") then
+        if (not isHoloEnabled() and not isxEightEnabled()) then
+            SightModifier = getxEightModifier(silencerEnabled)
+            OutputLogMessage("[SIGHT] x8\n")
+        elseif (isxEightEnabled()) then
+            SightModifier = getHoloModifier(silencerEnabled)
+            OutputLogMessage("[SIGHT] Holo\n")
+        elseif (isHoloEnabled()) then
+            SightModifier = 1.0
+            OutputLogMessage("[SIGHT] No Sight\n")
+        end
+    else
+       if (isxEightEnabled()) then
+            SightModifier = getxEightModifier(silencerEnabled)
+        elseif (isHoloEnabled()) then
+            SightModifier = getHoloModifier(silencerEnabled)
+        end 
+    end
+end
+---------- MoveMouseRelative & Sleep
 function MMR(x, y, sleepAfter)
     sensModifier = GetSensModifier() * GetAttachmentModifiers()
     MoveMouseRelative(round(x * sensModifier), round(y *sensModifier))
     FastSleep(sleepAfter * MuzzleBoostModifier)
 end
 
+---------- Macro
 function AK_0()
     BaseSens = 0.5
     BaseFOV = 75
@@ -3077,62 +3129,10 @@ function LR300()
         break
     end
 end
-function isSilencerEnabled()
-    return AttachmentModifier == SilencerModifier
-end
-function getHoloModifier(withSilencer)
-    if withSilencer then
-        return HoloWithSilencerModifier
-    else 
-        return HoloModifier
-    end
-end
-function getxEightModifier(withSilencer)
-    if withSilencer then
-        return xEightWithSilencerModifier
-    else 
-        return xEightModifier 
-    end
-end
+-----------
 
-function isHoloEnabled()
-    return ((SightModifier == HoloModifier) or (SightModifier == HoloWithSilencerModifier))
-end 
-
-function isxEightEnabled()
-    return ((SightModifier == xEightModifier) or (SightModifier == xEightWithSilencerModifier))
-end
-function UpdateAttachments(type)
-    if (type == "attach") then
-        if (AttachmentModifier == 1.0) then
-            AttachmentModifier = SilencerModifier
-            OutputLogMessage("[SILENCER] Attached\n")
-        elseif (AttachmentModifier == 0.8) then
-            AttachmentModifier = 1.0
-            OutputLogMessage("[SILENCER] De-Attached\n")
-        end
-    end
-   local silencerEnabled = isSilencerEnabled()
-
-    if (type == "sight") then
-        if (not isHoloEnabled() and not isxEightEnabled()) then
-            SightModifier = getxEightModifier(silencerEnabled)
-            OutputLogMessage("[SIGHT] x8\n")
-        elseif (isxEightEnabled()) then
-            SightModifier = getHoloModifier(silencerEnabled)
-            OutputLogMessage("[SIGHT] Holo\n")
-        elseif (isHoloEnabled()) then
-            SightModifier = 1.0
-            OutputLogMessage("[SIGHT] No Sight\n")
-        end
-    else
-       if (isxEightEnabled()) then
-            SightModifier = getxEightModifier(silencerEnabled)
-        elseif (isHoloEnabled()) then
-            SightModifier = getHoloModifier(silencerEnabled)
-        end 
-    end
-end
+ 
+ 
 function OnEvent(event, arg)
     if (event == "MOUSE_BUTTON_PRESSED" and arg == Activate) then
         Enabled = not Enabled
@@ -3164,9 +3164,9 @@ function OnEvent(event, arg)
     end
     if (event == "MOUSE_BUTTON_PRESSED" and arg == MuzzleBoostSwitch) then
         if (MuzzleBoostModifier == 1.0) then
-            MuzzleBoostModifier = 0.92
+            MuzzleBoostModifier = MuzzleBoostModifierActive
             OutputLogMessage("[MUZZLE] Attached\n")
-        elseif (MuzzleBoostModifier == 0.92) then
+        elseif (MuzzleBoostModifier == MuzzleBoostModifierActive) then
             MuzzleBoostModifier = 1.0
             OutputLogMessage("[MUZZLE] De-Attached\n")
         end
