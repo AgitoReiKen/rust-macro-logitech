@@ -31,3 +31,4 @@ Macrosses taken from [https://botmek.ru/share/?group=Rust] and converted to lua 
 - fov multiplier is calculated in .lua. Differences accepted.
 
 #### Do not abuse low-skilled players.
+#### Being super agressive will probably result in a macro check or ban on some servers. Use it carefully
